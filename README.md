@@ -1,2 +1,0 @@
-# TFA_PhoneSavvy
-LE MEILLEUR TFA DE L'ANNEE
