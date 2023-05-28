@@ -1,1 +1,3 @@
-console.info('Hello world');
+import { gsap } from "gsap";
+console.log(gasp.version);
+

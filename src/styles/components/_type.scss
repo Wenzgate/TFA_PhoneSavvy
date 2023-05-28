@@ -1,10 +1,23 @@
 body {
   font-family: sans-serif;
   font-size: $size-text;
-  line-height: 1.5;
-  color: $c-text;
+  line-height: 1.24;
+  color: $c-text--white;
+  background-color: $c-bg--body;
+  font-family: $family-text--corps;
+  font-weight: 500;
 }
 
 .title {
-  color: $c-alt;
+  color: $c-text;
 }
+
+h1,h3{
+  font-family: 'Syne', sans-serif;
+}
+
+a {
+  color: $c-link;
+  text-decoration: none;
+}
+
