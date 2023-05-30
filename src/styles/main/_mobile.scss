@@ -1,9 +1,12 @@
-//Burger Menu
+//Navigation
 header{
-    position: relative;
+    position: absolute;
     left: 0;
+    top: 100%;
     width: 100%;
     height: 64px;
+    z-index: 500;
+    background-color: $c-bg--body;
 }
 
 .navigation{
@@ -128,7 +131,7 @@ header{
     }
 }
 
-//Burger Menu
+//Navigation
 
 ////////////////////////////////
 
@@ -189,6 +192,7 @@ header{
 
 .section-intro {
     padding: 8px 0;
+    margin-top: 96px;
     font-weight:200;
  
     &__p{
@@ -222,6 +226,20 @@ header{
     color: $c-text;
     width: 100%;
     margin: 8px 0;
+    transition: all .3s ease-in-out;
+    transform-origin: center center;
+
+    &::after {
+        content: '';
+        position: absolute;
+        background-image:url(../assets/images/cross_section.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 16px;
+        height: 16px;
+        top: 16px;
+        right: 16px;
+   }
 
     &__subTitle:last-of-type{
         margin-top: 24px;
@@ -299,7 +317,7 @@ header{
         }
     }
 
-    &:nth-of-type(5) .section-content__list:last-of-type .section-content__list-item {
+    &:nth-of-type(4) .section-content__list:last-of-type .section-content__list-item {
         font-family: $family-text--corps;
         font-weight: 400;
         font-style: italic;
@@ -313,11 +331,11 @@ header{
             }
     }
 
-    &:nth-of-type(6) .section-content__p--bold {
+    &:nth-of-type(5) .section-content__p--bold {
         margin-right: 32px !important ;
     }
 
-    &:nth-of-type(7) .section-content__p--bold:last-of-type{
+    &:nth-of-type(6) .section-content__p--bold:last-of-type{
         text-align: center;
         margin-left: auto;
         margin-right: auto !important;
@@ -334,10 +352,10 @@ header{
             margin: auto auto 8px auto;
         }
     }
-    @for $i from 1 through 6 {
+    @for $i from 0 through 5 {
 
     &:nth-of-type(#{$i + 1}) .section-content__picto {
-        background-image: url("../assets/images/picto#{($i - 2) + 1}.svg");
+        background-image: url("../assets/images/picto#{($i - 1) + 1}.svg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -348,7 +366,7 @@ header{
         
     }
 
-    &:nth-of-type(5) div:nth-of-type(2){
+    &:nth-of-type(4) div:nth-of-type(2){
         width: 60px;
     }
 
@@ -435,3 +453,86 @@ header{
         height: 16px;
     }
 }
+
+
+// Footer
+
+////////////////////////////////
+
+// Transition styles Section
+
+.transition-section--active{
+    height: 176px ;
+    overflow: hidden;
+    margin-left: 16px;
+    margin-right: 16px;
+    width: calc(100% - 32px);
+    padding: 16px 0 0 0 ;
+    background: linear-gradient(135deg, rgba(140,140,192,1) 0%, rgba(134,168,231,1) 50%, rgba(95,251,241,1) 100%);
+
+     &::after {
+         content: '';
+         position: absolute;
+         background-image:url(../assets/images/arrow_section.svg);
+         background-repeat: no-repeat;
+         background-position: center;
+         width: 16px;
+         height: 8px;
+        top: calc(100% - 24px);
+        right: 16px;
+    }
+
+    &::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(140,140,192,1) 0%, rgba(134,168,231,1) 50%, rgba(95,251,241,1) 100%);
+        -webkit-mask-image: linear-gradient(0deg, rgba(140,140,192,1) 0%,rgba(139,143,197,1) 5%, rgba(134,168,231,0) 50%, rgba(95,251,241,0) 100%);
+        mask-image: linear-gradient(0deg, rgba(140,140,192,1) 0%,rgba(139,143,197,1) 5%, rgba(134,168,231,0) 50%, rgba(95,251,241,0) 100%);
+        mask-size: 100% 100%;
+    }
+}
+
+.transition-section--hover{
+    height: 80px;
+    overflow: hidden;
+    margin-left: 16px;
+    margin-right: 16px;
+    width: calc(100% - 32px);
+    padding: 0;
+
+    &::after{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        content: '';
+        width: 32px;
+        height: 32px;
+    }
+
+    & > * {
+        display: none;
+    }
+
+    &:nth-of-type(4)::after{
+        height: 42px;
+    }
+}
+
+@for $i from 0 through 5 {
+
+    .transition-section--hover:nth-of-type(#{$i + 1})::after {
+        background-image: url("../assets/images/picto#{($i - 1) + 1}.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        
+    }
+        
+    }
+
+// Transition styles Section
