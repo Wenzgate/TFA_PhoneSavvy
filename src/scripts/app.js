@@ -21,12 +21,13 @@ let closeSection = false;
 let compteurClasse1 = 0;
 
 var navbar = document.querySelector(".header")
-var sticky = navbar.offsetTop;
 
+function homeFunction () {
+
+if (document.body.classList.contains('page-home')) {
 
 mainElement.style.height = newHeight;
-
-
+var sticky = navbar.offsetTop;
 window.addEventListener("scroll", function() {
     if (window.pageYOffset >= sticky) {
         navbar.style.position = "fixed";
@@ -36,6 +37,12 @@ window.addEventListener("scroll", function() {
         navbar.style.top = "100%";
     }
 });
+}
+}
+
+homeFunction();
+
+
 
 openMenu.addEventListener('click', () => {
     document.querySelector('.navigation__menu').classList.add('navigation__menu--open');
@@ -55,8 +62,11 @@ sections.forEach((section) => {
             section.classList.add('transition-section--hover');
         })
 
+        
+
         mainElement.style.height = "auto";
         section.classList.remove('transition-section--hover');
+        section.classList.remove('transition-section--hover--waiting');
         setTimeout(() => {
             const scrollOffset = section.offsetTop - 96;
             window.scrollTo({
@@ -103,28 +113,80 @@ sections.forEach((section) => {
         onEnter: function() {
 
             if (isScrollTriggerEnabled) {
-                section.classList.add("transition-section--active");
                 section.classList.remove('transition-section--hover');
+                section.classList.remove('transition-section--hover--waiting');
+                section.classList.add("transition-section--active");
+                
+
+
+
+                const previousElement = section.previousElementSibling;
+                const nextElement = section.nextElementSibling;
+
+                if (previousElement && previousElement.classList.contains("section-content")) {
+                    previousElement.classList.remove("transition-section--hover--waiting");
+                }
+
+                if (nextElement) {
+                    nextElement.classList.remove("transition-section--hover--waiting");
+                }
+
             }
         },
         onLeave: function() {
             if (isScrollTriggerEnabled) {
                 section.classList.remove("transition-section--active");
                 section.classList.add('transition-section--hover');
+
+                const previousElement = section.previousElementSibling;
+                const nextElement = section.nextElementSibling;
+
+                if (previousElement && previousElement.classList.contains("section-content")) {
+                    previousElement.classList.add("transition-section--hover--waiting");
+                }
+
+                if (nextElement) {
+                    nextElement.classList.add("transition-section--hover--waiting");
+                }
             }
         },
 
         onEnterBack: function() {
 
             if (isScrollTriggerEnabled) {
-                section.classList.add("transition-section--active");
                 section.classList.remove('transition-section--hover');
+                section.classList.remove('transition-section--hover--waiting');
+                section.classList.add("transition-section--active");
+                
+
+
+                const previousElement = section.previousElementSibling;
+                const nextElement = section.nextElementSibling;
+
+                if (previousElement && previousElement.classList.contains("section-content")) {
+                    previousElement.classList.remove("transition-section--hover--waiting");
+                }
+
+                if (nextElement) {
+                    nextElement.classList.remove("transition-section--hover--waiting");
+                }
             }
         },
         onLeaveBack: function() {
             if (isScrollTriggerEnabled) {
                 section.classList.remove("transition-section--active");
                 section.classList.add('transition-section--hover');
+
+                const previousElement = section.previousElementSibling;
+                const nextElement = section.nextElementSibling;
+
+                if (previousElement && previousElement.classList.contains("section-content")) {
+                    previousElement.classList.add("transition-section--hover--waiting");
+                }
+
+                if (nextElement) {
+                    nextElement.classList.add("transition-section--hover--waiting");
+                }
             }
         },
     });
@@ -140,3 +202,16 @@ let vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 //Redimensionnent du burgerMenu
+
+
+
+const gradientAnimation = gsap.timeline({ repeat: -1, yoyo: true });
+    gradientAnimation.to("#a stop:first-child", { attr: { "stop-color": "#8C8CC0" }, duration: 3 });
+    gradientAnimation.to("#a stop:last-child", { attr: { "stop-color": "#86A8E7" }, duration: 2 }, "-=2");
+  
+
+element1.forEach((element) => {
+
+
+    
+})

@@ -23,6 +23,8 @@ body {
 h1,h3{
   font-weight: 800;
   font-family: 'Syne', sans-serif;
+  z-index: 500;
+  position: relative;
 }
 
 h3{
@@ -69,3 +71,6 @@ svg{
   border-radius: 10px 10px 0 0;
 }
 
+.section-content svg{
+  display: none;
+}

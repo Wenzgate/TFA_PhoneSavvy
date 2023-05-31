@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TFA - PhoneSavvy</title>
+  <title>Video - PhoneSavvy</title>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -20,42 +20,42 @@
 
   <script src="scripts/app.js" defer></script>
 </head>
-<body>
+<body class="page-video">
 
-  <header>
+  <header id="header-top">
     <nav class="navigation">
       <h2 class="navigation__title">PhoneSavvy</h2>
       
       <svg class="navigation__btn navigation__btn--open" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="32" height="32" fill="#EBEBEB" rx="7"/><circle cx="12" cy="12" r="2" fill="#2A2A2A"/><circle cx="12" cy="20" r="2" fill="#2A2A2A"/><circle cx="20" cy="12" r="2" fill="#2A2A2A"/><circle cx="20" cy="20" r="2" fill="#2A2A2A"/></svg>
       
       <div class="navigation__menu">
-        <svg class="navigation__btn navigation__btn--close" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="32" height="32.8205" y=".410248" fill="#2A2A2A" rx="7"/><rect width="4.05161" height="16.2064" fill="#D9D9D9" rx="2.0258" transform="matrix(.6981 .716 -.6981 .716 20.3135 9.64099)"/><rect width="4.05161" height="16.2064" fill="#D9D9D9" rx="2.0258" transform="matrix(.6981 -.716 .6981 .716 9 12.542)"/></svg>
+        <svg class="navigation__btn navigation__btn--close" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="32" height="32"  fill="#2A2A2A" rx="7"/><rect width="4.05161" height="16.2064" fill="#D9D9D9" rx="2.0258" transform="matrix(.6981 .716 -.6981 .716 20.3135 9.64099)"/><rect width="4.05161" height="16.2064" fill="#D9D9D9" rx="2.0258" transform="matrix(.6981 -.716 .6981 .716 9 12.542)"/></svg>
         
         <ul class="navigation__list">
           <li class="navigation__item">
-            <a class="navigation__link" href="index.html">accueil</a>
+            <a id="link-accueil" class="navigation__link" href="index.html">accueil</a>
           </li>
           <li class="navigation__item">
-            <a class="navigation__link" href="uikit.html">ui kit</a>
+            <a id="link-uikit" class="navigation__link" href="uikit.html">ui kit</a>
           </li>
           <li class="navigation__item">
-            <a class="navigation__link" href="credits.html">crédits</a>
+            <a id="link-credits" class="navigation__link" href="credits.html">crédits</a>
           </li>
           <li class="navigation__item">
-            <a class="navigation__link" href="video.html">vidéo</a>
+            <a id="link-video" class="navigation__link" href="video.html">vidéo</a>
           </li>
         </ul>
         
         <div class="navigation__subNav">
           <ul class="navigation__network">
             <li class="navigation__network__item">
-              <a href="https://twitter.com/ActualTruthDWT">twitter</a>
+              <a href="https://twitter.com/ActualTruthDWT"></a>
             </li>
             <li class="navigation__network__item">
-              <a href="https://www.instagram.com/actualtruth_dwt/">instagram</a>
+              <a href="https://www.instagram.com/actualtruth_dwt/"></a>
             </li>
             <li class="navigation__network__item">
-              <a href="https://mika-cornelis.be">site web</a>
+              <a href="https://mika-cornelis.be"></a>
             </li>
           </ul>
 
@@ -65,25 +65,29 @@
     </nav>
   </header>
 
-  <main>
-    
-
-  </main>
+  <main class="main">
+    <section class="section section-video">
+      <h1 class="section-video__title">video</h1>
+      <div class="section-video__container">
+        <video class="video" id="video"></video>
+      </div>
+    </section>
+  </main >
 
   <footer class="footer">
     <ul class="footer__list">
       <li class="footer__list-item">
-        <a class="footer__link" href="https://twitter.com/ActualTruthDWT" target="_blank">twitter</a>
+        <a class="footer__link" href="https://twitter.com/ActualTruthDWT" target="_blank"></a>
       </li>
       <li class="footer__list-item">
-        <a class="footer__link" href="https://www.instagram.com/actualtruth_dwt/" target="_blank">instagram</a>
+        <a class="footer__link" href="https://www.instagram.com/actualtruth_dwt/" target="_blank"></a>
       </li>
       <li class="footer__list-item">
-        <a class="footer__link" href="https://mika-cornelis.be" target="_blank">site web</a>
+        <a class="footer__link" href="https://mika-cornelis.be" target="_blank"> </a>
       </li>
     </ul>
     <div class="footer__container">
-      <p class="footer__copyright">© 2023 Mika Cornelis</p>
+      <p class="footer__copyright">© 2023</p>
       <div class="footer__dwt"></div>
     </div>
   </footer>
