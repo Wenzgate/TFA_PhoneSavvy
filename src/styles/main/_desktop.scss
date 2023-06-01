@@ -1,0 +1,153 @@
+@media (min-width: 600px) {
+
+    body{
+        font-size: 18px;
+    }  
+}
+
+@media (min-width: 1440px) {
+
+    body{
+        font-size: 20px;
+    }
+
+    header{
+        position: relative;
+        top: 0;
+        height: 96px;
+    }
+
+.navigation{
+
+    &__btn{
+        display: none;
+    }
+
+    &__menu{
+        position: relative;
+        display: flex;
+        top: 0;
+        background: none;
+        margin: 0;
+        justify-content: space-between;
+        
+    }
+
+    &__list{
+        display: flex;
+        margin-left: 80px;
+    }
+
+    &__item{
+        margin: 0 64px 0 0 !important;
+        font-size: 12px;
+
+        & a{
+        color: $c-text--white;
+        text-transform: uppercase;
+
+            &::before{
+            background: none !important;
+            }
+        }
+    }
+
+    &__subNav{
+        position: relative;
+        width: 128px;
+        right: 0;
+        margin: 0 16px 0 0;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        background-color: $c-bg--white;
+        cursor: pointer;
+
+        & a:last-of-type{
+            font-size: 12px;
+            color: $c-text;
+        }
+    }
+
+    &__network{
+        display: none;
+    }
+}
+
+
+
+
+.main{
+    width: calc(100% - 32px);
+    margin: 0 16px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 16px;
+}
+
+.section{
+    margin: 0;
+    width: 100%;
+    height: 50vh;
+    justify-content: flex-start;
+}
+
+.section-home{
+    margin-top:0;
+    grid-column: 1/-1;
+    height: calc(100vh - 432px);
+    min-height: 400px;
+
+    &__container{
+        width: auto;
+        height: auto;
+        position: relative;
+        align-items: flex-end;
+
+        &__title{
+            max-width: 100%;
+
+        }
+    }
+
+    &__title{
+        rotate: 0deg;
+        margin: 30px 0 0 0;
+
+    }
+
+    &__subtitle{
+        position: relative;
+        width: auto;
+        margin-top: 16px;
+        line-height: 1;        
+        margin: 16px 72px 0 0;
+        font-weight: 200;
+
+        &::after{
+            background-image: none;
+        }
+    }
+}
+
+.section-intro{
+    grid-column: 1/6;
+    padding: 0;
+    height: 240px;
+
+    &__p{
+        margin: 32px 32px 0 32px;
+        font-weight: 500;
+        letter-spacing: 1px;
+
+        & span{
+            font-weight: 700;
+        }
+    }
+}
+
+.section-content{
+    height: 240px;
+}
+    
+}

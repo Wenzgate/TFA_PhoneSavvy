@@ -11,36 +11,41 @@ const closeMenu = document.querySelector('.navigation__btn--close');
 const sections = document.querySelectorAll('.section-content');
 const mainElement = document.querySelector('.main');
 
+const mediaQuery = window.matchMedia('(max-width: 1439px)')
+
 const currentHeight = mainElement.clientHeight;
 const newHeight = currentHeight + 400 + "px";
-const classe1 = "transition-section--hover";
 const nombreElementsAttendu = 5;
 
-let isScrollTriggerEnabled = true;
 let closeSection = false;
+let isScrollTriggerEnabled = true;
 let compteurClasse1 = 0;
 
 var navbar = document.querySelector(".header")
 
-function homeFunction () {
+if (mediaQuery.matches) {
+    function homeFunction () {
 
-if (document.body.classList.contains('page-home')) {
+        if (document.body.classList.contains('page-home')) {
+        
+        mainElement.style.height = newHeight;
+        var sticky = navbar.offsetTop;
+        window.addEventListener("scroll", function() {
+            if (window.pageYOffset >= sticky) {
+                navbar.style.position = "fixed";
+                navbar.style.top = "0";
+            } else {
+                navbar.style.position = "absolute";
+                navbar.style.top = "100%";
+            }
+        });
+        }
+        }
+        
+        homeFunction();
+  }
 
-mainElement.style.height = newHeight;
-var sticky = navbar.offsetTop;
-window.addEventListener("scroll", function() {
-    if (window.pageYOffset >= sticky) {
-        navbar.style.position = "fixed";
-        navbar.style.top = "0";
-    } else {
-        navbar.style.position = "absolute";
-        navbar.style.top = "100%";
-    }
-});
-}
-}
 
-homeFunction();
 
 
 
@@ -51,6 +56,8 @@ openMenu.addEventListener('click', () => {
 closeMenu.addEventListener('click', () => {
     document.querySelector('.navigation__menu').classList.remove('navigation__menu--open');
 })
+
+
 
 sections.forEach((section) => {
     section.addEventListener('click', () => {
@@ -117,9 +124,6 @@ sections.forEach((section) => {
                 section.classList.remove('transition-section--hover--waiting');
                 section.classList.add("transition-section--active");
                 
-
-
-
                 const previousElement = section.previousElementSibling;
                 const nextElement = section.nextElementSibling;
 
@@ -210,8 +214,3 @@ const gradientAnimation = gsap.timeline({ repeat: -1, yoyo: true });
     gradientAnimation.to("#a stop:last-child", { attr: { "stop-color": "#86A8E7" }, duration: 2 }, "-=2");
   
 
-element1.forEach((element) => {
-
-
-    
-})

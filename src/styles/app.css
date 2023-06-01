@@ -692,7 +692,7 @@ header {
 }
 .section-home__svg svg path {
   rotate: 270deg;
-  animation: svgRotation 8s forwards cubic-bezier(0, 1.1, 0.12, 1);
+  animation: svgRotation 8s 0.5s forwards cubic-bezier(0, 1.1, 0.12, 1);
 }
 
 @keyframes svgRotation {
@@ -754,4 +754,21 @@ header {
 .page-uikit .section-uikit svg {
   width: 100%;
   height: 100%;
+}
+
+@media (min-width: 1440px) {
+  body {
+    font-size: 20px;
+  }
+  header {
+    position: relative;
+    top: 0;
+    height: 96px;
+  }
+  .navigation__title {
+    font-size: 1rem;
+  }
+  .section-home {
+    margin-top: 0;
+  }
 }/*# sourceMappingURL=app.css.map */

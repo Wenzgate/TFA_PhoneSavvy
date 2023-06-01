@@ -1,3 +1,5 @@
+
+
 //Navigation
 header{
     position: absolute;
@@ -17,7 +19,7 @@ header{
 
     &__title {
         margin:0 0 0 16px;
-        font-size: 1rem;
+        font-size: 1em;
         font-family: $family-text--title;
         font-weight: 800;
     }
@@ -177,11 +179,24 @@ header{
         top: 50%;
         translate :0 -50%;
         z-index: 500;
+        width: 100%;
+        align-items: center;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
 
+        &__title{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            max-width: 650px;
+            justify-content: center;
+        }
     }
 
     &__title{
-        font-size: 4.236rem;
+        font-size: 4.236em;
         line-height: 0.8;
         rotate: -90deg;
         & span {
@@ -192,8 +207,10 @@ header{
     &__subtitle{
         font-weight: 300;
         width: 150px;
-        font-size: 1rem;
+        font-size: 1em;
         margin-bottom: 16px;
+
+
 
         &::after{
             content: '';
@@ -646,7 +663,7 @@ header{
 
         & path{
             rotate: 270deg;
-        animation: svgRotation 8s  forwards cubic-bezier(0,1.1,.12,1);
+        animation: svgRotation 8s .5s forwards cubic-bezier(0,1.1,.12,1);
         }
     }
 }
