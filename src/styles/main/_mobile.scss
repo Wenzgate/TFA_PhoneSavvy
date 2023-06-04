@@ -1,4 +1,6 @@
-
+.section-navigation{
+    display: none;
+}
 
 //Navigation
 header{
@@ -271,7 +273,7 @@ header{
     color: $c-text;
     width: 100%;
     margin: 8px 0;
-    transition: all .5s ease-out;
+    transition: all .3s ease-out;
     transform-origin: center center;
     overflow: hidden;
 
@@ -398,10 +400,10 @@ header{
             margin: auto auto 8px auto;
         }
     }
-    @for $i from 0 through 5 {
+    @for $i from 2 through 6 {
 
     &:nth-of-type(#{$i + 1}) .section-content__picto {
-        background-image: url("../assets/images/picto#{($i - 1) + 1}.svg");
+        background-image: url("../assets/images/picto#{($i - 1)}.svg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -412,7 +414,7 @@ header{
         
     }
 
-    &:nth-of-type(4) div:nth-of-type(2){
+    &:nth-of-type(5) div:nth-of-type(2){
         width: 60px;
     }
 
@@ -519,7 +521,8 @@ header{
 
 // Transition styles Section
 
-    .transition-section--hover{
+
+.transition-section--hover{
     height: 80px;
     overflow: hidden;
     margin-left: 16px;
@@ -528,7 +531,30 @@ header{
     padding: 0;
     background-color: $c-bg--section;
 
-    & svg{
+    & .svg-border {
+        display: block;
+        width: 100%;
+        height: 100%;
+        rotate: 180deg;
+    
+        path {
+            height: 72px;
+            width: 50px;
+            stroke-width: 2px;
+            stroke-dashoffset: 1019.4013061523438;
+            stroke-dasharray:1019.4013061523438 ;
+        }
+    }
+
+    @keyframes loadingBorder {
+        
+    
+        to{
+            stroke-dashoffset: 0
+        }
+    }
+
+    & .section-content__svg{
         display: block;
         position: absolute;
         left: 50%;
@@ -537,8 +563,6 @@ header{
         filter: blur(10px);
         height: 80px;
         width: 120px;
-
-       
     }
 
     &::after{
@@ -555,15 +579,15 @@ header{
         display: none;
     }
 
-    &:nth-of-type(4)::after{
+    &:nth-of-type(5)::after{
         height: 42px;
     }
 }
 
-@for $i from 0 through 5 {
+@for $i from 2 through 6 {
 
     .transition-section--hover:nth-of-type(#{$i + 1})::after {
-        background-image: url("../assets/images/pictoWait#{($i - 1) + 1}.svg");
+        background-image: url("../assets/images/pictoWait#{$i - 1}.svg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -574,20 +598,16 @@ header{
 
 
     .transition-section--hover--waiting{
-    
+
+        
         background-color: $c-bg--white;
     
-        & svg path{
-
-            fill: $c-text;
-        }
+        
     
-    }
-    
-    @for $i from 0 through 5 {
+    @for $i from 2 through 6 {
     
         .transition-section--hover--waiting:nth-of-type(#{$i + 1})::after {
-            background-image: url("../assets/images/picto#{($i - 1) + 1}.svg");
+            background-image: url("../assets/images/picto#{$i - 1}.svg");
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
@@ -595,6 +615,8 @@ header{
         }
             
         }
+    }
+
 
 
 .transition-section--active{
@@ -634,6 +656,10 @@ header{
     & .section-content__svg {
         display: none !important;
     }
+}
+
+.loading-border{
+    animation: loadingBorder 1.5s backwards ease-in-out;
 }
 // Transition styles Section
 
