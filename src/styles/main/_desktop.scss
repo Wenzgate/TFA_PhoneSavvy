@@ -138,12 +138,16 @@
 .section-intro{
     grid-column: 1/6;
     grid-row: 2/3;
-    padding: 0;
+    padding: 32px 0 16px 0;
     //height: 240px;
 
     &__p{
         margin: 32px 32px 0 32px;
         font-weight: 500;
+
+        &:nth-of-type(1){
+            margin: 0 16px 0 32px;
+        }
 
         & span{
             font-weight: 700;
@@ -158,8 +162,13 @@
     padding: 32px 0;
     grid-row: 3/4;
     transition: height 0.5s ease-in forwards;
+    cursor: pointer;
 
+    &::after{
+        top: 16px;
+    }
 }
+
     
 
 .section-navigation{
@@ -167,27 +176,47 @@
     grid-row: 2/3;
     //height: 240px;
     display: grid;
-    grid-gap: 16px;
     grid-template-columns: repeat(5, 1fr);
+    
+    
 
-    & :first-child{
+    & div:first-child{
         margin-left: 16px;
     }
 
-    & :last-child{
+    & div:last-child{
         margin-right: 16px;
     }
 
     &__item{
         border-radius: 10px;
-        margin: 16px 0;
+        margin: 16px 8px;
         position: relative;
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+
+        & svg{
+            margin: 0;
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(10px);
+            height: 80px;
+            width: 120px;
+
+        }
     }
 
     & .transition-section--hover{
         width: auto;
         height: auto;
         background-color: $c-bg--body;
+    }
+
+    & .transition-section--hover--waiting path{
+        fill: $c-bg--section;
     }
 }
 
@@ -196,7 +225,6 @@
     .section-navigation__item:nth-of-type(#{$i + 1})::after {
         content: '';
         position: absolute;
-        background-image: url("../assets/images/picto#{$i + 1}.svg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -206,6 +234,14 @@
         left: 50%;
         width: 64px;
         height: 64px;
+    }
+
+    .transition-section--hover--waiting:nth-of-type(#{$i + 1})::after {
+        background-image: url("../assets/images/picto#{$i + 1}.svg");
+    }
+
+    .transition-section--hover:nth-of-type(#{$i + 1})::after{
+        background-image: url("../assets/images/pictoWait#{$i + 1}.svg");
     }
 
     .section-navigation__item:nth-of-type(3)::after{
