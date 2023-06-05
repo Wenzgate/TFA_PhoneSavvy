@@ -54,8 +54,6 @@ if (mediaQueryMobile.matches) {
             document.querySelector('.navigation__menu').classList.remove('navigation__menu--open');
         })
         
-        
-        
         sections.forEach((section) => {
             const paths = section.querySelectorAll('.svg-border path');
         
@@ -63,7 +61,7 @@ if (mediaQueryMobile.matches) {
                 trigger: section, 
                 start: "top center",
                 end: "110% center", 
-                markers : true,
+
                 onEnter: function() {
         
                     if (isScrollTriggerEnabled) {
@@ -88,7 +86,6 @@ if (mediaQueryMobile.matches) {
                             //     nextElement.classList.remove("transition-section--hover--waiting");
                             // }
                         })
-                    
                     }
                 },
         
@@ -100,7 +97,6 @@ if (mediaQueryMobile.matches) {
                         if(section.classList.contains("transition-section--active")) {
                         section.classList.remove("transition-section--active");
                         section.classList.add('transition-section--hover');
-        
         
                             const previousElement = section.previousElementSibling;
                             const nextElement = section.nextElementSibling;
@@ -140,7 +136,6 @@ if (mediaQueryMobile.matches) {
                             //     nextElement.classList.remove("transition-section--hover--waiting");
                             // }
                         })
-                        
                     }
                 },
                 onLeaveBack: function() {
@@ -151,7 +146,6 @@ if (mediaQueryMobile.matches) {
                         if(section.classList.contains("transition-section--active")) {
                         section.classList.remove("transition-section--active");
                         section.classList.add('transition-section--hover');
-        
         
                             const previousElement = section.previousElementSibling;
                             const nextElement = section.nextElementSibling;
@@ -213,78 +207,112 @@ if (mediaQueryMobile.matches) {
                         isScrollTriggerEnabled = true;
                     }
                     ScrollTrigger.refresh(); // Actualise manuellement le déclencheur
-        
-        
                 }
             });
-        
-        
-        
-        
-        
         });
         
-        
-        
         //Redimensionnent du burgerMenu
-        
-        // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+
         let vh = window.innerHeight * 0.01;
-        // Then we set the value in the --vh custom property to the root of the document
         document.documentElement.style.setProperty('--vh', `${vh}px`);
         
         //Redimensionnent du burgerMenu
-        
 }
 
 
 if (mediaQueryDesktop.matches) {
     const items = document.querySelectorAll(".section-navigation__item");
     const sections = document.querySelectorAll(".section-content");
+    const openSections = document.querySelectorAll(".section-content, .section-navigation__item");
 
     let activeIndex = -1;
     let isFirstHover = true;
+    let sectionOpen = false;
 
-    sections.forEach((section) => {
-        section.classList.remove("transition-section--hover");
-
-    });
-
-    items.forEach((item, index) => {
-        item.addEventListener('mouseenter', () => {
-            mainElement.style.height = "auto";
-
-            sections.forEach((section, sectionIndex) => {
-                if (sectionIndex !== index) {
-                    gsap.set(section, { display: 'none' });
-                } else {
-                    gsap.set(section, { display: 'block' });
-                    section.classList.add("transition-section--active");
-                
-                    if (isFirstHover) {
-                        isFirstHover = false;
-                        gsap.to(section, {
-                            duration: 0.5,
-                            height: '180px',
-                            ease: 'expo.out',
-                            onComplete: () => {
-                                section.classList.add('animation-complete');
-                            }
-                        });
-                    } else {
-                        section.style.height = '180px';
-                    }
-                }
-            });
     
-        activeIndex = index;
-        });
-    });
+
+    let lastHoveredItem = null;
+
+items.forEach((item, index) => {
+  item.addEventListener('mouseenter', () => {
+    console.log(sectionOpen);
+    if (!sectionOpen) {
+      mainElement.style.height = "auto";
+      item.classList.add('transition-section--hover');
+      item.classList.remove('transition-section--hover--waiting');
+
+      sections.forEach((section, sectionIndex) => {
+        if (sectionIndex !== index) {
+          gsap.set(section, { display: 'none' });
+        } else {
+          gsap.set(section, { display: 'block' });
+          section.classList.add("transition-section--active");
+
+          if (isFirstHover) {
+            isFirstHover = false;
+            gsap.to(section, {
+              duration: 0.5,
+              height: '180px',
+              ease: 'expo.out',
+              onComplete: () => {
+                section.classList.add('animation-complete');
+              }
+            });
+          } else {
+            section.style.height = '180px';
+          }
+        }
+      });
+      activeIndex = index;
+
+      // Réinitialiser l'item précédemment survolé
+      if (lastHoveredItem && lastHoveredItem !== item) {
+        lastHoveredItem.classList.remove('transition-section--hover');
+        lastHoveredItem.classList.add('transition-section--hover--waiting');
+      }
+      lastHoveredItem = item;
+    } else if (sectionOpen) {
+      item.classList.add('transition-section--hover');
+      item.classList.remove('transition-section--hover--waiting');
+      sections.forEach((section, sectionIndex) => {
+        if (sectionIndex !== index) {
+          gsap.set(section, { display: 'none' });
+        } else {
+          gsap.set(section, { display: 'block' });
+        }
+      });
+
+      // Réinitialiser l'item précédemment survolé
+      if (lastHoveredItem && lastHoveredItem !== item) {
+        lastHoveredItem.classList.remove('transition-section--hover');
+        lastHoveredItem.classList.add('transition-section--hover--waiting');
+      }
+      lastHoveredItem = item;
+    }
+  });
+
+  item.addEventListener('mouseleave', () => {
+    if (!sectionOpen) {
+      if (!lastHoveredItem || lastHoveredItem !== item) {
+        item.classList.remove('transition-section--hover');
+        item.classList.add('transition-section--hover--waiting');
+      }
+    } else if (sectionOpen) {
+      if (!lastHoveredItem || lastHoveredItem !== item) {
+        item.classList.remove('transition-section--hover');
+        item.classList.add('transition-section--hover--waiting');
+      }
+    }
+  });
+});
+
     
     sections.forEach((section, index) => {
+        section.classList.remove("transition-section--hover");
         if (index !== activeIndex) {
             section.style.display = 'none';
         } else if (!isFirstHover && !section.classList.contains('animation-complete') && !section.classList.contains('transition-section--active')) {
+            section.classList.remove('animation-complete')
             section.style.height = '180px';
             section.classList.add("transition-section--active");
         } else  {
@@ -294,34 +322,60 @@ if (mediaQueryDesktop.matches) {
                 ease: 'expo.out',})
         }
 
-        section.addEventListener('click', () => {
-            if(section.classList.contains('transition-section--active')) {
-                section.style.height = "auto"
-            isScrollTriggerEnabled = false;
-            closeSection = true;
+        section.addEventListener("click", function(event) {
+            const clickX = event.clientX;
+            const clickY = event.clientY;
+            const rect = section.getBoundingClientRect();
     
-            sections.forEach((section) => {
-                section.classList.remove('transition-section--active');
-            })
-    
-            mainElement.style.height = "auto";
-            section.classList.remove('transition-section--hover');
-            setTimeout(() => {
-                const scrollOffset = section.offsetTop - 96;
-                window.scrollTo({
-                    top: scrollOffset,
-                    behavior: "smooth"
+            if (clickX >= rect.right - 64 && clickX <= rect.right &&clickY >= rect.top &&clickY <= rect.top + 64) {
+                activeIndex = -1;
+                isFirstHover = true;
+                sectionOpen = false;
+                mainElement.style.height = "calc(100vh - 192px)";
+
+                sections.forEach((section) => {
+                section.style.display = 'none';
+                section.style.height = '0';
                 });
-            }, 150);
-        }
+
+                
+                console.log(sectionOpen)
+            }
+        });
+
+        items.forEach((openSection) => {
+
+
+            openSection.addEventListener('click', () => {
+                if (!sectionOpen && section.classList.contains('transition-section--active')){
+                sectionOpen = true;
+                }
+                if(section.classList.contains('transition-section--active')) {
+                    openSection.classList.remove('transition-section--hover--waiting');
+                    openSection.classList.add('transition-section--hover');
+                    isScrollTriggerEnabled = false;
+                    closeSection = true;
+                    section.classList.remove('transition-section--active');
+                    sections.forEach((section)=>{
+                        section.style.height = "auto"
+                    });
+                    
+                    gsap.set(mainElement, { height: 'auto', onComplete: () => {
+                        section.style.height = 'auto';
+                    }});
+
+                    setTimeout(() => {
+                        const scrollOffset = section.offsetTop ;
+                        window.scrollTo({
+                            top: scrollOffset,
+                            behavior: "smooth"
+                        });
+                    }, 300);
+                }
+            })
         })
     });
-
-    
 }
-
-
-
 
 const gradientAnimation = gsap.timeline({ repeat: -1, yoyo: true });
     gradientAnimation.to("#a stop:first-child", { attr: { "stop-color": "#8C8CC0" }, duration: 3 });
