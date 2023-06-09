@@ -365,7 +365,7 @@ header{
         }
     }
 
-    &:nth-of-type(5) .section-content__list:last-of-type .section-content__list-item {
+    &:nth-of-type(4) .section-content__list:last-of-type .section-content__list-item {
         font-family: $family-text--corps;
         font-weight: 400;
         font-style: italic;
@@ -379,11 +379,11 @@ header{
             }
     }
 
-    &:nth-of-type(5) .section-content__p--bold {
+    &:nth-of-type(4) .section-content__p--bold {
         margin-right: 32px !important ;
     }
 
-    &:nth-of-type(6) .section-content__p--bold:last-of-type{
+    &:nth-of-type(5) .section-content__p--bold:last-of-type{
         text-align: center;
         margin-left: auto;
         margin-right: auto !important;
@@ -400,10 +400,10 @@ header{
             margin: auto auto 8px auto;
         }
     }
-    @for $i from 2 through 6 {
+    @for $i from 1 through 5 {
 
     &:nth-of-type(#{$i + 1}) .section-content__picto {
-        background-image: url("../assets/images/picto#{($i - 1)}.svg");
+        background-image: url("../assets/images/picto#{($i)}.svg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -414,7 +414,7 @@ header{
         
     }
 
-    &:nth-of-type(5) div:nth-of-type(2){
+    &:nth-of-type(4) div:nth-of-type(2){
         width: 60px;
     }
 
@@ -579,15 +579,15 @@ header{
         display: none;
     }
 
-    &:nth-of-type(5)::after{
+    &:nth-of-type(4)::after{
         height: 42px;
     }
 }
 
-@for $i from 2 through 6 {
+@for $i from 1 through 5 {
 
     .transition-section--hover:nth-of-type(#{$i + 1})::after {
-        background-image: url("../assets/images/pictoWait#{$i - 1}.svg");
+        background-image: url("../assets/images/pictoWait#{$i}.svg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -604,10 +604,10 @@ header{
     
         
     
-    @for $i from 2 through 6 {
+    @for $i from 1 through 5 {
     
         .transition-section--hover--waiting:nth-of-type(#{$i + 1})::after {
-            background-image: url("../assets/images/picto#{$i - 1}.svg");
+            background-image: url("../assets/images/picto#{$i}.svg");
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
