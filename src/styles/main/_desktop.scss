@@ -46,6 +46,10 @@
         color: $c-text--white;
         text-transform: uppercase;
 
+            &:hover{
+                color: #8C8CC0;
+            }
+
             &::before{
             background: none !important;
             }
@@ -62,6 +66,10 @@
         justify-content: center;
         background-color: $c-bg--white;
         cursor: pointer;
+
+        &:hover{
+            background: linear-gradient(135deg, rgba(140,140,192,1) 0%, rgba(134,168,231,1) 50%, rgba(95,251,241,1) 100%);
+        }
 
         & a:last-of-type{
             font-size: 12px;
@@ -83,9 +91,10 @@
     margin: 0 16px;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    //grid-template-rows: 2fr 1fr;
+    grid-template-rows: 2fr 1fr;
     grid-gap: 16px;
-    min-height: 680px;
+    min-height: 530px;
+    transition: all .3s ease-in-out;
 
 }
 
@@ -101,7 +110,11 @@
     grid-column: 1/-1;
     grid-row: 1/2;
     height: auto;
-    min-height: 400px;
+    min-height: 250px;
+
+    &__svg{
+        scale: 1.5;
+    }
 
     &__container{
         width: auto;
@@ -161,12 +174,110 @@
     grid-column: 1/-1;
     padding: 32px 0;
     grid-row: 3/4;
-    transition: height 0.5s ease-in forwards;
-    cursor: pointer;
+    transition: all .5s ease-in-out;
+    &::after{
+        margin: 8px 8px 0 0;
+        width: 24px;
+        height: 24px;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    
+
+    & > svg:nth-child(2){
+        scale: 5;
+        top: 280px;
+    }
+
+    & p{
+        margin: 32px 0 32px 64px;
+        max-width: 40%;
+        line-height: 158%;
+    }
+
+    &__p--bold{
+        max-width: 50% !important;
+        margin-top: 16px !important;
+    }
+
+    &__p--quote{
+        margin: 32px 0 32px 64px !important;
+        width: 30%;
+    }
+
+    & > .section-content__picto{
+        position: absolute;
+        top: 50%;
+        right: 128px;
+        margin: 0;
+        transform: translateY(-50%);
+        width: 240px !important;
+        height: 240px !important;
+    }
+
+    &:nth-of-type(5) {
+        & .section-content__picto{
+            width: 182px !important;
+        }
+
+        & .section-content__graph{
+            scale: 1.5;
+        }
+    }
+
+    &:nth-of-type(6) {
+        & .section-content__list{
+            max-width: 100%;
+
+            & .section-content__p{
+                margin-left: 16px;
+            }
+        }
+    }
+
+    &__container{
+        height: 250px;
+        width: 40%;
+
+        & :first-child{
+            margin-right: 50px;
+        }
+
+        & :last-child{
+            margin-left: 48px ;
+        }
+
+        & + .section-content__list{
+            margin: 32px;
+            width: 30%;
+            min-width: 450px;
+
+        }
+    }
+
+    & ul {
+        margin-left: 32px;
+        max-width: 40%;
+    }
+
+    & a:hover{
+        text-decoration: underline;
+    }
 
     &::after{
         top: 16px;
     }
+}
+
+.transition-section--active .section-content__picto{
+    display: none;
+}
+
+.transition-section--active::after{
+    background-image: none !important;
 }
 
     
@@ -232,8 +343,8 @@
         transform: translate(-50%, -50%);
         top: 50%;
         left: 50%;
-        width: 64px;
-        height: 64px;
+        width: 48px;
+        height: 48px;
     }
 
     .transition-section--hover--waiting:nth-of-type(#{$i + 1})::after {
@@ -245,10 +356,28 @@
     }
 
     .section-navigation__item:nth-of-type(3)::after{
-        width: 48px;
+        width: 36px;
     }
         
     }
+
+.section-navigation--under{
+    position: relative;
+    grid-column: 1/-1;
+    grid-row: 4/5;
+    display: none;
+    height: 80px;
+
+    & div::after{
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    & div:nth-last-of-type(3)::after{
+        width: 18px !important;
+        
+    }
+}
 
 .contentFade{
     display: block !important;
@@ -261,5 +390,179 @@
     height: 96px;
     margin: 0;
 }
+
+.page-home .navigation__list li:nth-child(1) a{
+    background: linear-gradient(135deg, rgb(140, 140, 192) 0%, rgb(134, 168, 231) 50%, rgb(95, 251, 241) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;}
+
+.page-uikit{
+
+    & .main{
+        display: block;
+        position: relative;
+        color: $c-text;
+        height: auto;
+    }
+
+    & .section-uikit{
+        height: 100%;
+        padding-top: 16px;
+        background-color: #E3E3E3;
+        flex-wrap: wrap;
+        display: flex;
+        flex-direction: column;
+
+       
+
+        
+
+
+        &__gradient{  
+            max-width: 1050px;
+            height: 160px;
+            margin: 16px 0 16px 16px;
+
+            & span{
+                font-size:12px ;
+                margin-bottom: 16px;
+            }
+
+            &::after{
+                margin-top: 112px;
+                width: 100%;
+                height: 48px;
+                max-width: 1050px;
+            }
+        }
+
+        &__color{
+            height: 160px;
+            margin: 16px;
+            max-width: 240px;
+
+            & span{
+                font-size:12px ;
+                margin-bottom: 16px;
+
+            }
+
+            &::after{
+                margin-top: 112px;
+                height: 48px;
+                max-width: 240px;
+            }
+        }
+
+        &__container--typo{
+
+            & p{
+                margin: 23px;
+            }
+
+            & p:nth-of-type(1){
+                font-size: 4.236em;
+            }
+
+            & p:nth-of-type(2){
+                font-size: 1em;
+            }
+
+            & p:nth-of-type(3){
+                font-size: 1.618em;
+            }
+
+            & p:nth-of-type(4){
+                font-size: 1em;
+            }
+
+        }
+    }
+
+    & h1{
+        margin: 16px 32px;
+        font-size: 2.618em;
+    }
+
+
+    
+
+    &.navigation__list li:nth-child(2) a{
+        background: linear-gradient(135deg, rgb(140, 140, 192) 0%, rgb(134, 168, 231) 50%, rgb(95, 251, 241) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+    }
+} 
+
+.page-credits {
+
+    & .main{
+        height: auto;
+    }
+
+    & a:hover{
+        text-decoration: underline;
+    }
 }
 
+.page-credits .navigation__list li:nth-child(3) a{
+    background: linear-gradient(135deg, rgb(140, 140, 192) 0%, rgb(134, 168, 231) 50%, rgb(95, 251, 241) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;}
+
+.page-video .navigation__list li:nth-child(4) a{
+    background: linear-gradient(135deg, rgb(140, 140, 192) 0%, rgb(134, 168, 231) 50%, rgb(95, 251, 241) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;}
+}
+
+
+
+
+@media (min-width: 1900px) {
+    @for $i from 0 through 5 {
+
+    .section-navigation__item:nth-of-type(#{$i + 1})::after {
+        width: 64px;
+        height: 64px;
+    }
+    }
+    
+    .section-navigation__item:nth-of-type(3)::after{
+        width: 49px;
+    }
+    }
+
+
+
+
+@media (min-width: 2300px) {
+
+.main{
+    grid-template-rows: 4fr 1fr;
+}
+
+.section-home__svg svg{
+    scale: 2;
+}
+
+
+@for $i from 0 through 5 {
+.section-navigation__item:nth-of-type(#{$i + 1})::after {
+    width: 80px;
+    height: 80px;
+}
+}
+
+.section-navigation__item:nth-of-type(3)::after{
+    width: 60px;
+}
+}

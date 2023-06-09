@@ -28,7 +28,7 @@ h1,h3{
 }
 
 h3{
-  margin:0 8px 0 16px;
+  margin:0 16px;
   font-size: 1.618rem;
 }
 
@@ -73,4 +73,24 @@ svg{
 
 .section-content svg{
   display: none;
+}
+
+
+
+
+@media (min-width: 1024px) {
+
+  h3{
+    margin:0 16px 0 32px;
+    font-size: 2.618rem;
+  }
+  
+  h4{
+    margin:32px 16px 24px 32px;
+    font-size: 1em;
+
+  }
+
+
+    
 }
